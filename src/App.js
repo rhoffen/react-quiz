@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import questionData from './quiz-data.js';
 import StartButton from './start-btn';
+import ResetButton from './reset-btn';
 import QuizDisplay from './quiz-display.js';
 
 class App extends Component {
@@ -16,31 +17,33 @@ class App extends Component {
       questionList: []
     }
     this.startQuiz = this.startQuiz.bind(this);
-
+    this.resetQuiz = this.resetQuiz.bind(this);
   }
 
-  async startQuiz() {
-    let resetCounter = this.state.resetCount;
-    if (this.state.startButtonClicked) {
-      await this.setState({
-        resetButtonClicked: true,
-        resetCount: resetCounter + 1
-        });
-    }
-    await this.setState({
-      questionList: questionData,
-      startButtonClicked: true
+  resetQuiz() {
+    let numResets = this.state.resetCount;
+    console.log('Reset button clicked');
+    this.setState({
+      resetCount: numResets + 1
     });
   }
 
+  startQuiz() {
+    this.setState({
+        questionList: questionData,
+        startButtonClicked: true
+      })
+  }
+  
 
   render() {
     return (
       <div className="App">
           <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked}></StartButton>
-          <QuizDisplay quizData = {this.state.questionList} quizTitle = {this.state.quizTitle} resetReq = {this.state.resetButtonClicked} resetCount = {this.state.resetCount}></QuizDisplay>
+          <ResetButton onReset = {this.resetQuiz} started = {this.state.startButtonClicked}></ResetButton>
+          <QuizDisplay quizData = {this.state.questionList} quizTitle = {this.state.quizTitle} resetCount = {this.state.resetCount}></QuizDisplay>
       </div>
   )};
-}
+};
 
 export default App;

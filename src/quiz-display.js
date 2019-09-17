@@ -8,8 +8,7 @@ class QuizDisplay extends React.Component {
                 <p>{this.props.quizTitle}</p>
                 {
                     this.props.quizData.map((question,index) => {
-                        // {console.log(question)}
-                        return <Question question={question} key={index} resetReq = {this.props.resetReq} resetCount = {this.props.resetCount}></Question>
+                        return <Question question={question} key={index} resetCount = {this.props.resetCount}></Question>
                     })
                 }
             </div>

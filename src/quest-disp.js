@@ -26,27 +26,25 @@ class Question extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.state = {
             optionClick: false,
-            answer: ''
+            answer: '',
         }
+        
     }
 
-    async handleClick(e) {
+    handleClick(e) {
+        e.persist();
+        const result = e.target.className;
+        console.log('Something was clicked');
+        this.setState({
+            optionClick: true,
+            answer: result
+        });
+    }    
 
-        // if (this.props.resetReq) {
-        //     this.setState({
-        //         optionClick: false,
-        //         answer: '' 
-        //     })
-        // } else {
-            e.persist();
-            const result = e.target.className;
-            console.log('Something was clicked');
-            await this.setState({
-                optionClick: true,
-                answer: result
-            });
-        
-
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.resetCount !== prevProps.resetCount) {
+            this.setState({optionClick: false});
+        }
     }
 
     render() {
@@ -54,7 +52,7 @@ class Question extends React.Component {
             <div>
                 <h2>{this.props.question.question}</h2>
                 <OptionList options={this.props.question.options} handleClick = {this.handleClick}></OptionList>
-                <Result wrongText = {this.props.question.incorrectText} clicked = {this.state.optionClick} answer = {this.state.answer} resetReq = {this.props.resetReq} resetCount = {this.props.resetCount}/>
+                <Result wrongText = {this.props.question.incorrectText} clicked = {this.state.optionClick} answer = {this.state.answer}/>
             </div>
         )
     }
