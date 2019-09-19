@@ -12,7 +12,6 @@ class ResetButton extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props.started)}
                 {this.displayReset()}
             </div>
         )
