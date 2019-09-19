@@ -3,7 +3,6 @@ import React from 'react';
 
 class HintButton extends React.Component {
     giveHint() {
-        console.log(this.props)
         if (this.props.hintRequest) {
             return this.props.hintText
         } else {
