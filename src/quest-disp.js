@@ -50,7 +50,7 @@ class Question extends React.Component {
         return (
             <div>
                 <h2>{this.props.question.question}</h2>
-                <OptionList options={this.props.question.options} handleClick = {this.handleClick}></OptionList>
+                <OptionList options={this.props.question.options} handleClick = {this.state.optionClick ? null : this.handleClick}></OptionList>
                 <Result wrongText = {this.props.question.incorrectText} clicked = {this.state.optionClick} answer = {this.state.answer}/>
             </div>
         )
