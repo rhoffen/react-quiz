@@ -28,7 +28,6 @@ class Question extends React.Component {
             optionClick: false,
             answer: '',
         }
-        
     }
 
     handleClick(e) {
