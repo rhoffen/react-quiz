@@ -24,27 +24,11 @@ class OptionList extends React.Component {
 class Question extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleClick = this.handleClick.bind(this);
         this.hintClick = this.hintClick.bind(this);
         this.state = {
-            // optionClick: false,
-            // answer: '',
             hintRequested: false
         }
     }
-
-    // handleClick(e) {
-    //     e.persist();
-    //     const classList = e.target.className.split(' ');
-    //     const result = classList[0];
-    //     const item = classList[1]
-    //     console.log(`${result} ${item}`);
-    //     console.log('Something was clicked');
-    //     this.setState({
-    //         optionClick: true,
-    //         answer: result
-    //     });
-    // }
 
     hintClick(e) {
         this.setState({
@@ -53,12 +37,11 @@ class Question extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // if (this.props.resetCount !== prevProps.resetCount) {
-        //     this.setState({
-        //         optionClick: false,
-        //         hintRequested: false
-        //     });
-        // }
+        if (this.props.resetCount !== prevProps.resetCount) {
+            this.setState({
+                hintRequested: false
+            });
+        }
     }
 
     render() {

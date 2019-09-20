@@ -14,7 +14,6 @@ class QuizDisplay extends React.Component {
            this.state[stateKey].optionClick = false;
            this.state[stateKey].answer = '';
         });
-        console.log(this.state);
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -22,14 +21,17 @@ class QuizDisplay extends React.Component {
         e.persist();
         const classList = e.target.className.split(' ');
         const result = classList[0];
+        let scoreAdd = result === "correct" ? 1 : 0;
+        let newScore = this.state.score + scoreAdd;
+        console.log(`add to score: ${scoreAdd}`);
         let item = classList[1];
-        console.log(item)
         console.log('Something was clicked');
         this.setState({
+            score: newScore,
             [item]:{optionClick: true,
                   answer: result}
 
-        }, () => console.log(this.state));
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -37,6 +39,7 @@ class QuizDisplay extends React.Component {
             let keyList = Object.keys(this.state).slice(1);
             keyList.forEach(key => {
                 this.setState({
+                    score: 0,
                     [key]: {
                         optionClick: false,
                         answer: ''}
