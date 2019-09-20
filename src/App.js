@@ -30,7 +30,6 @@ class App extends Component {
 
   startQuiz() {
     this.setState({
-        // questionList: questionData,
         startButtonClicked: true
       })
   }
@@ -39,10 +38,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked}></StartButton>
+          <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked} quizTitle = {this.state.quizTitle}></StartButton>
           <ResetButton onReset = {this.resetQuiz} started = {this.state.startButtonClicked}></ResetButton>
           {
-            this.state.startButtonClicked ? <QuizDisplay started = {this.state.startButtonClicked} quizData = {this.state.questionList} quizTitle = {this.state.quizTitle} resetCount = {this.state.resetCount}></QuizDisplay> : null
+            this.state.startButtonClicked ? <QuizDisplay started = {this.state.startButtonClicked} quizData = {this.state.questionList} resetCount = {this.state.resetCount}></QuizDisplay> : null
           }
           
       </div>

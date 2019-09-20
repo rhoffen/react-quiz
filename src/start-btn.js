@@ -13,6 +13,7 @@ class StartButton extends React.Component {
     render() {
         return (
             <div>
+                <h1>{this.props.quizTitle}</h1>
                 {this.setStartButton(this.props.started)}
             </div>
             
