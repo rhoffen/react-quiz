@@ -30,7 +30,19 @@ class QuizDisplay extends React.Component {
                   answer: result}
 
         }, () => console.log(this.state));
-        
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.resetCount !== prevProps.resetCount) {
+            let keyList = Object.keys(this.state).slice(1);
+            keyList.forEach(key => {
+                this.setState({
+                    [key]: {
+                        optionClick: false,
+                        answer: ''}
+                });
+            });
+        }
     }
 
     render() {

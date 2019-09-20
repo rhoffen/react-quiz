@@ -59,7 +59,6 @@ class Question extends React.Component {
         //         hintRequested: false
         //     });
         // }
-        console.log(`optionClick: ${this.props.optionClick}`)
     }
 
     render() {
