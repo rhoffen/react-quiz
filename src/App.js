@@ -14,7 +14,7 @@ class App extends Component {
       resetButtonClicked: false,
       resetCount: 0,
       quizTitle: 'Here\'s my awesome quiz app!',
-      questionList: []
+      questionList: questionData
     }
     this.startQuiz = this.startQuiz.bind(this);
     this.resetQuiz = this.resetQuiz.bind(this);
@@ -30,7 +30,7 @@ class App extends Component {
 
   startQuiz() {
     this.setState({
-        questionList: questionData,
+        // questionList: questionData,
         startButtonClicked: true
       })
   }
@@ -41,7 +41,10 @@ class App extends Component {
       <div className="App">
           <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked}></StartButton>
           <ResetButton onReset = {this.resetQuiz} started = {this.state.startButtonClicked}></ResetButton>
-          <QuizDisplay quizData = {this.state.questionList} quizTitle = {this.state.quizTitle} resetCount = {this.state.resetCount}></QuizDisplay>
+          {
+            this.state.startButtonClicked ? <QuizDisplay started = {this.state.startButtonClicked} quizData = {this.state.questionList} quizTitle = {this.state.quizTitle} resetCount = {this.state.resetCount}></QuizDisplay> : null
+          }
+          
       </div>
   )};
 };

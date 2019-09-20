@@ -1,6 +1,6 @@
 const questionData = [];
 
-questionData[1] = {
+questionData[0] = {
     question: "What was the best album from the 1980s?",
     options: [
         ["Purple Rain", true],
@@ -12,7 +12,7 @@ questionData[1] = {
     //resultBoxId: "result1"
 }
 
-questionData[2] = {
+questionData[1] = {
     question: "Which rap group had a song including the lyrics: 'The name's McDaniels, not McDonalds. / The rhymes are Darryl's and the burgers are Ronald's'",
     options: [
         ["2 Live Crew", false],
@@ -24,7 +24,7 @@ questionData[2] = {
     //resultBoxId: "result2"
 }
 
-questionData[3] = {
+questionData[2] = {
     question: "What does TARDIS stand for?",
     options: [
         ["Totally Awesome Retro DJ in Seattle", false],
