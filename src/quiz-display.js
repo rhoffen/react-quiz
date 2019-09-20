@@ -15,16 +15,22 @@ class QuizDisplay extends React.Component {
            this.state[stateKey].answer = '';
         });
         console.log(this.state);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
         e.persist();
-        const result = e.target.className;
+        const classList = e.target.className.split(' ');
+        const result = classList[0];
+        let item = classList[1];
+        console.log(item)
         console.log('Something was clicked');
         this.setState({
-            optionClick: true,
-            answer: result
-        });
+            [item]:{optionClick: true,
+                  answer: result}
+
+        }, () => console.log(this.state));
+        
     }
 
     render() {
@@ -36,7 +42,8 @@ class QuizDisplay extends React.Component {
                 }
                 {
                     this.props.quizData.map((question,index) => {
-                        return <Question question={question} key={index} resetCount = {this.props.resetCount}></Question>
+                        let item = `q${index}`;
+                        return <Question handleClick = {this.handleClick} optionClick = {this.state[item].optionClick} answer = {this.state[item].answer} question={question} id = {`q${index}`} key={index} resetCount = {this.props.resetCount}></Question>
                     })
                 }
             </div>

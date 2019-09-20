@@ -6,9 +6,9 @@ class OptionList extends React.Component {
     generateList(choices) {
             const listItems = choices.map((option, index) => {
             if (option[1]) {
-                return <li className="correct" key = {index} onClick={this.props.handleClick}>{option[0]}</li>
+                return <li className={`correct ${this.props.class2}`} key = {index} onClick={this.props.handleClick}>{option[0]}</li>
             } else {
-                return <li key = {index} onClick={this.props.handleClick}>{option[0]}</li>
+                return <li className={`incorrect ${this.props.class2}`} key = {index} onClick={this.props.handleClick}>{option[0]}</li>
             }
         });
         return listItems;
@@ -24,24 +24,27 @@ class OptionList extends React.Component {
 class Question extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
         this.hintClick = this.hintClick.bind(this);
         this.state = {
-            optionClick: false,
-            answer: '',
+            // optionClick: false,
+            // answer: '',
             hintRequested: false
         }
     }
 
-    handleClick(e) {
-        e.persist();
-        const result = e.target.className;
-        console.log('Something was clicked');
-        this.setState({
-            optionClick: true,
-            answer: result
-        });
-    }
+    // handleClick(e) {
+    //     e.persist();
+    //     const classList = e.target.className.split(' ');
+    //     const result = classList[0];
+    //     const item = classList[1]
+    //     console.log(`${result} ${item}`);
+    //     console.log('Something was clicked');
+    //     this.setState({
+    //         optionClick: true,
+    //         answer: result
+    //     });
+    // }
 
     hintClick(e) {
         this.setState({
@@ -50,21 +53,22 @@ class Question extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.resetCount !== prevProps.resetCount) {
-            this.setState({
-                optionClick: false,
-                hintRequested: false
-            });
-        }
+        // if (this.props.resetCount !== prevProps.resetCount) {
+        //     this.setState({
+        //         optionClick: false,
+        //         hintRequested: false
+        //     });
+        // }
+        console.log(`optionClick: ${this.props.optionClick}`)
     }
 
     render() {
         return (
             <div>
                 <h2>{this.props.question.question}</h2>
-                <OptionList options={this.props.question.options} handleClick = {this.state.optionClick ? null : this.handleClick}></OptionList>
+                <OptionList options={this.props.question.options} class2 = {this.props.id} handleClick = {this.props.optionClick ? null : this.props.handleClick}></OptionList>
                 <HintButton hintText = {this.props.question.hintText} hintClick = {this.hintClick} hintRequest = {this.state.hintRequested}/>
-                <Result wrongText = {this.props.question.incorrectText} clicked = {this.state.optionClick} answer = {this.state.answer}/>
+                <Result wrongText = {this.props.question.incorrectText} clicked = {this.props.optionClick} answer = {this.props.answer}/>
             </div>
         )
     }
