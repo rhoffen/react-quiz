@@ -4,11 +4,11 @@ import React from 'react'
 class Result extends React.Component {
     giveResult() {
         if (!this.props.clicked) {
-          return <p>Click on an answer to select it.</p>
+          return <p className="instructions">Click on an answer to select it.</p>
         } else if (this.props.answer === 'correct') {
-           return <button>Correct!</button>
+           return <button className="correct-button">Correct!</button>
         } else {
-          return <button>{this.props.wrongText}</button>
+          return <button className = "incorrect-button">{this.props.wrongText}</button>
         }
     }
 

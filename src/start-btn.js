@@ -6,14 +6,14 @@ class StartButton extends React.Component {
         if (started) {
             return null
         } else {
-            return <button onClick={this.props.onStart}>Start Quiz</button>
+            return <button onClick={this.props.onStart} className = "start-button">Start Quiz</button>
         }
     }
 
     render() {
         return (
             <div>
-                <h1>{this.props.quizTitle}</h1>
+                <h1 className = "quiz-title">{this.props.quizTitle}</h1>
                 {this.setStartButton(this.props.started)}
             </div>
             

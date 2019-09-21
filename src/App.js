@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import questionData from './quiz-data.js';
 import StartButton from './start-btn';
@@ -39,11 +38,10 @@ class App extends Component {
     return (
       <div className="App">
           <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked} quizTitle = {this.state.quizTitle}></StartButton>
-          <ResetButton onReset = {this.resetQuiz} started = {this.state.startButtonClicked}></ResetButton>
           {
             this.state.startButtonClicked ? <QuizDisplay started = {this.state.startButtonClicked} quizData = {this.state.questionList} resetCount = {this.state.resetCount}></QuizDisplay> : null
           }
-          
+          <ResetButton onReset = {this.resetQuiz} started = {this.state.startButtonClicked}></ResetButton>
       </div>
   )};
 };

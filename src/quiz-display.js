@@ -23,9 +23,7 @@ class QuizDisplay extends React.Component {
         const result = classList[0];
         let scoreAdd = result === "correct" ? 1 : 0;
         let newScore = this.state.score + scoreAdd;
-        console.log(`add to score: ${scoreAdd}`);
         let item = classList[1];
-        console.log('Something was clicked');
         this.setState({
             score: newScore,
             [item]:{optionClick: true,

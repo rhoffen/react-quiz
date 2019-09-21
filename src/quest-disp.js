@@ -1,5 +1,5 @@
 import React from 'react';
-import Result from './Result';
+import Result from './result-display';
 import HintButton from './hint-button';
 
 class OptionList extends React.Component {
@@ -16,7 +16,7 @@ class OptionList extends React.Component {
 
     render() {
         return (
-            <ol>{this.generateList(this.props.options)}</ol>
+            <ul>{this.generateList(this.props.options)}</ul>
         )
     }
 }
