@@ -1,3 +1,4 @@
+//Displays start button to start quiz, disappears it when quiz has started
 import React from 'react';
 
 class StartButton extends React.Component {

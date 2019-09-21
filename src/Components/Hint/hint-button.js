@@ -1,5 +1,6 @@
+// ./src/Components/Hint/hint-button.js
+//Displays hint button, gives hint when user requests it.
 import React from 'react';
-
 
 class HintButton extends React.Component {
     giveHint() {

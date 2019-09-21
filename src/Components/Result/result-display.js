@@ -1,5 +1,7 @@
-import React from 'react'
+// /src/Components/Result/result-display
 
+// Displays instructions if user has not made a guess, or feedback when user guesses
+import React from 'react'
 
 class Result extends React.Component {
     giveResult() {

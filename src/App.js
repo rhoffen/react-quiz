@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import questionData from './quiz-data.js';
-import StartButton from './start-btn';
-import ResetButton from './reset-btn';
-import QuizDisplay from './quiz-display.js';
+import StartButton from './Components/Start/start-btn';
+import ResetButton from './Components/Reset/reset-btn';
+import QuizDisplay from './Components/Quiz/quiz-display.js';
 
 class App extends Component {
   constructor(props) {

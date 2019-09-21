@@ -1,3 +1,4 @@
+//Displays reset button after quiz has started
 import React from 'react';
 
 class ResetButton extends React.Component {
