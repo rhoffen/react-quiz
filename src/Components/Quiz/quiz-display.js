@@ -9,15 +9,29 @@ class QuizDisplay extends React.Component {
         this.state = {
             score: 0
         }
-        //Dynamically generates and intializes state variables to track whether an option has been clicked and whether the option is the correct answer for each question when number of questions is unknown
-        this.props.quizData.map((question, index) => {
-           let stateKey = `q${index}`; //keys are q1, q2, etc. for question 1, question 2, ...
-           this.state[stateKey] = {};
-           this.state[stateKey].optionClick = false;
-           this.state[stateKey].answer = '';
-        });
+
         this.handleClick = this.handleClick.bind(this);
+        console.log(this.props)
     }
+
+    //If the quiz has started but the states for the questions not initialized yet, this method will initialize the states
+    static getDerivedStateFromProps(nextProps, prevState) {
+        
+        if (nextProps.started === true && !prevState['q0']) {
+            const update = {};
+            nextProps.quizData.map((question, index) => {
+                let stateKey = `q${index}`; //keys are q0, q1, etc. for question 1, question 2, ...
+                update[stateKey] = {};
+                update[stateKey].optionClick = false;
+                update[stateKey].answer = '';
+                });
+            return update;
+        } else {
+            return null
+        };
+
+    }
+
     //Event handler for click event when user chooses an answer.
     handleClick(e) {
         e.persist();
@@ -33,6 +47,8 @@ class QuizDisplay extends React.Component {
 
         });
     }
+
+
     //Whenever the reset button is clicked, reset the states for all the questions to unclicked and null accuracy
     componentDidUpdate(prevProps, prevState) {
         if (this.props.resetCount !== prevProps.resetCount) { //Guard: This call to setState will only fire if the reset count changes
