@@ -1,6 +1,7 @@
 //Displays quiz title and handles logic for quiz interactions.  Passes display information to Question component
 import React from 'react';
 import Question from '../Question/quest-disp.js';
+import './quiz-display.css';
 
 class QuizDisplay extends React.Component {
     constructor(props) {
@@ -67,11 +68,16 @@ class QuizDisplay extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.props.quizTitle}</p> {/*Displays quiz title - Will be dynamic when multiple quizzes are available*/}
                 {/*After quiz is started, score and reset count will display*/}
                 {
-                    this.props.started ? <span>Score: {this.state.score}   Resets: {this.props.resetCount}</span> : null 
+                    this.props.started ? (
+                                            <div className = 'boxes'>
+                                                <span className='score-label label'>Score: </span><span className = 'score box'>{this.state.score}</span>  
+                                                <span className='reset-label label'>Resets: </span><span className = 'reset box'>{this.props.resetCount}</span>
+                                           </div>
+                    ): null
                 }
+                                           
                 {/*Maps each item in the quizData array to a Question component*/}
                 {
                     this.props.quizData.map((question,index) => {

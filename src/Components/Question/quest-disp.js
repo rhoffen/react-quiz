@@ -2,6 +2,7 @@
 import React from 'react';
 import Result from '../Result/result-display';
 import HintButton from '../Hint/hint-button';
+import './quest-disp.css';
 
 //Helper class to generate option list for Question component
 class OptionList extends React.Component {
@@ -48,7 +49,7 @@ class Question extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className = 'question-div'>
                 <h2>{this.props.question.question}</h2>
                 {/*Sends event handler to option list if no option has been clicked, sends null if option has been clicked, to avoid multiple guesses*/}
                 <OptionList options={this.props.question.options} class2 = {this.props.id} handleClick = {this.props.optionClick ? null : this.props.handleClick}></OptionList>
