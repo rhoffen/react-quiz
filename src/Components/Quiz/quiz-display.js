@@ -20,7 +20,8 @@ class QuizDisplay extends React.Component {
         
         if (nextProps.started === true && !prevState['q0']) {
             const update = {};
-            nextProps.quizData.map((question, index) => {
+            console.log(nextProps.quizData.slice(1));
+            nextProps.quizData.slice(1).map((question, index) => {
                 let stateKey = `q${index}`; //keys are q0, q1, etc. for question 1, question 2, ...
                 update[stateKey] = {};
                 update[stateKey].optionClick = false;
@@ -80,7 +81,7 @@ class QuizDisplay extends React.Component {
                                            
                 {/*Maps each item in the quizData array to a Question component*/}
                 {
-                    this.props.quizData.map((question,index) => {
+                    this.props.quizData.slice(1).map((question,index) => {
                         let item = `q${index}`;
                         return <Question handleClick = {this.handleClick} optionClick = {this.state[item].optionClick} answer = {this.state[item].answer} question={question} id = {`q${index}`} key={index} resetCount = {this.props.resetCount}></Question>
                     })

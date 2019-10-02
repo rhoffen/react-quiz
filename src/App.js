@@ -12,7 +12,6 @@ class App extends Component {
       startButtonClicked: false,
       resetButtonClicked: false,
       resetCount: 0,
-      quizTitle: 'Here\'s my awesome quiz app!',
       questionList: questionData
     }
     this.startQuiz = this.startQuiz.bind(this);
@@ -37,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked} quizTitle = {this.state.quizTitle}></StartButton>
+          <StartButton onStart = {this.startQuiz} started={this.state.startButtonClicked} quizTitle = {this.state.questionList[0]}></StartButton>
           {
             this.state.startButtonClicked ? <QuizDisplay started = {this.state.startButtonClicked} quizData = {this.state.questionList} resetCount = {this.state.resetCount}></QuizDisplay> : null
           }
