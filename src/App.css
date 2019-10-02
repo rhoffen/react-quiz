@@ -2,7 +2,8 @@
   text-align: center;
 }
 
-.start-button,
+
+/* .start-button, */
 .reset-button {
   width: 15%;
   font-size: 2rem;
@@ -11,3 +12,5 @@
   padding: 1rem;
   background-color: rgba(227,226,223,0.8);
 }
+
+

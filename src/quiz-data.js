@@ -1,5 +1,5 @@
 const questionData = [];
-questionData[0] = "Check out my awesome quiz app";
+questionData[0] = "Check out my awesome quiz app!!";
 
 questionData[1] = {
     question: "What was the best album from the 1980s?",
